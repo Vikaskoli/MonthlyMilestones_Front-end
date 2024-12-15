@@ -1,0 +1,307 @@
+:root {
+  /* Light Mode Palette */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f6f9;
+  --text-primary: #2c3e50;
+  --text-secondary: #4a5568;
+  --accent-color: #3498db;
+  --accent-hover: #2980b9;
+  --border-color: #e2e8f0;
+  
+  /* Dark Mode Palette */
+  --dark-bg-primary: #121212;
+  --dark-bg-secondary: #1e1e1e;
+  --dark-text-primary: #e0e0e0;
+  --dark-text-secondary: #b0b0b0;
+  --dark-accent-color: #4ecdc4;
+  --dark-accent-hover: #45b7aa;
+  --dark-border-color: #2c2c2c;
+
+  /* Typography */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Enhanced Transition and Animation Variables */
+  --transition-speed: 0.3s;
+  --transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Base Styles with Enhanced Animations */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: 
+    background-color var(--transition-speed) var(--transition-cubic),
+    color var(--transition-speed) var(--transition-cubic),
+    transform var(--transition-speed) var(--transition-cubic);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: 
+    background-color var(--transition-speed) var(--transition-cubic),
+    color var(--transition-speed) var(--transition-cubic);
+  perspective: 1000px;
+}
+
+/* Enhanced Dark Mode Support */
+body.dark-mode {
+  background-color: var(--dark-bg-primary);
+  color: var(--dark-text-primary);
+  background-image: 
+    radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive Container with Advanced Effects */
+.App {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.03);
+  transition: 
+    background-color var(--transition-speed) var(--transition-cubic),
+    box-shadow var(--transition-speed) var(--transition-cubic),
+    transform var(--transition-speed) var(--transition-cubic);
+  animation: fadeIn 0.6s backwards;
+  transform-style: preserve-3d;
+}
+
+body.dark-mode .App {
+  background-color: var(--dark-bg-secondary);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.App:hover {
+  transform: 
+    translateZ(20px) 
+    rotateX(2deg) 
+    rotateY(-2deg);
+}
+
+/* Typography with Enhanced Effects */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05em;
+  background: linear-gradient(
+    45deg, 
+    var(--accent-color), 
+    var(--accent-hover)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 
+    gradientShift 5s ease infinite,
+    pulse 3s ease-in-out infinite;
+}
+
+body.dark-mode h1 {
+  background: linear-gradient(
+    45deg, 
+    var(--dark-accent-color), 
+    var(--dark-accent-hover)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Form Elements with Interactive Animations */
+input, 
+textarea, 
+button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 
+    border-color var(--transition-speed) var(--transition-cubic),
+    background-color var(--transition-speed) var(--transition-cubic),
+    box-shadow var(--transition-speed) var(--transition-cubic),
+    transform var(--transition-speed) var(--transition-cubic);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 
+    0 0 0 3px rgba(52, 152, 219, 0.2),
+    0 4px 6px rgba(52, 152, 219, 0.1);
+  transform: scale(1.01);
+  animation: wiggle 0.3s ease-in-out;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255,255,255,0.3), 
+    transparent
+  );
+  transition: all var(--transition-speed) var(--transition-cubic);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+  transform: 
+    translateY(-3px) 
+    scale(1.02);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Card-Based Milestone Design with Enhanced Interactions */
+.milestone {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.05),
+    0 2px 5px rgba(0, 0, 0, 0.03);
+  transition: 
+    box-shadow var(--transition-speed) var(--transition-cubic),
+    transform var(--transition-speed) var(--transition-cubic);
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg, 
+    transparent, 
+    rgba(52, 152, 219, 0.05), 
+    transparent
+  );
+  transform: rotate(-45deg);
+  transition: transform var(--transition-speed) var(--transition-cubic);
+  opacity: 0;
+}
+
+.milestone:hover::after {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.milestone:hover {
+  transform: 
+    translateY(-10px) 
+    rotateX(3deg) 
+    scale(1.02);
+  box-shadow: 
+    0 15px 25px rgba(0, 0, 0, 0.1),
+    0 10px 15px rgba(0, 0, 0, 0.05);
+}
+
+.milestone h5 {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: 
+    color var(--transition-speed) var(--transition-cubic),
+    transform var(--transition-speed) var(--transition-cubic);
+}
+
+.milestone h5:hover {
+  transform: scale(1.05);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+  .App {
+    padding: 1rem;
+    transform: none;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  input, textarea, button {
+    padding: 0.5rem 0.75rem;
+  }
+}

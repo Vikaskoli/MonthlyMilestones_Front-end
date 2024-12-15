@@ -1,0 +1,313 @@
+:root {
+  /* Light Mode Palette */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f7fa;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --accent-primary: #3498db;
+  --accent-secondary: #2ecc71;
+  --accent-danger: #e74c3c;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Dark Mode Palette */
+  --dark-bg-primary: #121212;
+  --dark-bg-secondary: #1e1e1e;
+  --dark-text-primary: #e0e0e0;
+  --dark-text-secondary: #b0b0b0;
+  --dark-accent-primary: #4ecdc4;
+  --dark-accent-secondary: #16a085;
+  --dark-accent-danger: #c0392b;
+  --dark-border-color: #2c2c2c;
+  --dark-shadow-color: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-main: 'Sora', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Animations & Transitions */
+  --transition-fast: 0.2s;
+  --transition-medium: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+/* Global Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: 
+      all var(--transition-medium) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: var(--dark-bg-primary);
+  color: var(--dark-text-primary);
+}
+
+/* Responsive Container with Advanced Effects */
+.App {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  box-shadow: 
+      0 15px 35px var(--shadow-color),
+      0 5px 15px var(--shadow-color);
+  transform-style: preserve-3d;
+  transition: 
+      all var(--transition-medium) cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn var(--transition-slow) backwards;
+  overflow: hidden;
+  position: relative;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+      linear-gradient(
+          45deg, 
+          transparent, 
+          rgba(52, 152, 219, 0.1), 
+          transparent
+      );
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+
+/* Enhanced Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--accent-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.05em;
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  animation: pulse 3s infinite;
+}
+
+/* Form Elements with Advanced Interactions */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+input, 
+textarea, 
+button {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: 
+      all var(--transition-medium) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 
+      0 0 0 4px rgba(52, 152, 219, 0.2),
+      0 8px 15px rgba(52, 152, 219, 0.1);
+  transform: translateY(-5px);
+}
+
+button {
+  background: linear-gradient(
+      135deg, 
+      var(--accent-primary), 
+      var(--accent-secondary)
+  );
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      120deg, 
+      transparent, 
+      rgba(255,255,255,0.3), 
+      transparent
+  );
+  transition: all var(--transition-medium) ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 
+      0 10px 20px rgba(52, 152, 219, 0.2),
+      0 6px 10px rgba(52, 152, 219, 0.15);
+}
+
+button:disabled {
+  background: var(--border-color);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* Advanced Milestone Card Design */
+.milestone {
+  background-color: var(--bg-primary);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 
+      0 10px 25px var(--shadow-color),
+      0 5px 15px var(--shadow-color);
+  transition: 
+      all var(--transition-medium) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+      linear-gradient(
+          45deg, 
+          transparent, 
+          rgba(46, 204, 113, 0.1), 
+          transparent
+      );
+  transform: rotate(-45deg);
+  transition: transform var(--transition-medium) ease;
+  opacity: 0;
+}
+
+.milestone:hover::after {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.milestone:hover {
+  transform: 
+      scale(1.02) 
+      translateY(-10px) 
+      rotateX(3deg);
+  box-shadow: 
+      0 15px 35px var(--shadow-color),
+      0 10px 25px var(--shadow-color);
+}
+
+.milestone h5 {
+  color: var(--accent-primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.milestone h5::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+      to right, 
+      var(--accent-primary), 
+      var(--accent-secondary)
+  );
+  transform: scaleX(0);
+  transition: transform var(--transition-medium) ease;
+}
+
+.milestone h5:hover::after {
+  transform: scaleX(1);
+}
+
+/* Responsive Design Adjustments */
+@media screen and (max-width: 768px) {
+  .App {
+      padding: 1rem;
+      border-radius: 12px;
+  }
+
+  h1 {
+      font-size: 2.5rem;
+  }
+
+  input, 
+  textarea, 
+  button {
+      padding: 0.75rem 1rem;
+  }
+}
+
+/* Print Styles for Accessibility */
+@media print {
+  body, .App {
+      background: white;
+      color: black;
+  }
+}
