@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# MonthlyMilestones_Front-end
+This repository contains the frontend code for a live website built using modern web technologies. The project showcases a responsive and user-friendly interface, deployed via GitHub Pages for easy access.
+>>>>>>> c6101cd4563f86f978506f0b00daec016df8ef45
